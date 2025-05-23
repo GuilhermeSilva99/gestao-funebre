@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('tumulos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('numero');
+            $table->string('localizacao');
             $table->timestamps();
         });
     }

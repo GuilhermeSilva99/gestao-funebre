@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('user_x_permissaos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('permissao_id');
             $table->timestamps();
         });
     }

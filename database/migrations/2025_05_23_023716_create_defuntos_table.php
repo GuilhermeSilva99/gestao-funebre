@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('defuntos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('cpf');
+            $table->string('historia');
+            $table->string('codigo_qr');
             $table->timestamps();
         });
     }
