@@ -9,3 +9,15 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+  #full {
+    width: 100%;         /* Largura total */
+    height: 100%;        /* Altura total */
+    border-left: 300px;
+    border-right: 300px;
+  }
+
+ .div_conteudo {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
