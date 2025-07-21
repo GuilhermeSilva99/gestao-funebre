@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('nome');
             $table->string('cpf');
             $table->string('historia');
-            $table->string('codigo_qr');
+            $table->string('codigo_qr')->nullable();
+            $table->string('foto')->nullable();
+            $table->foreignId('tumulo_id');
             $table->timestamps();
         });
     }
