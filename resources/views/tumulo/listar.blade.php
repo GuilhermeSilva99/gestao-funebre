@@ -39,6 +39,7 @@
                                 <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.editar', $tumulo->id) }}>Editar</a>
                                 <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.visualizar', $tumulo->id) }}>Visualizar</a>
                                 <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.qrcode', $tumulo->id) }}>QR Code</a>
+                                <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('defunto.cadastrarSequencia', $tumulo->id) }}>Cadastrar defuntos</a>
                                 <!-- <a class="bg-red-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.deletar', $tumulo->id) }}>Deletar</a> -->
                             </td>
                         </tr>

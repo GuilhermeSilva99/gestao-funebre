@@ -18,6 +18,8 @@ Route::prefix('defunto')->group(function(){
     Route::get('/visualizar/{id}', [DefuntoController::class, 'visualizar'])->name('defunto.visualizar');
     Route::get('/qrcode/{id}',[DefuntoController::class, 'qrcode'])->name('defunto.qrcode');
     Route::get('/deletar/{id}', [DefuntoController::class, 'deletar'])->name('defunto.deletar');
+    Route::get('/cadastrarVarios/{id}', [DefuntoController::class, 'cadastrarSequencia'])->name('defunto.cadastrarSequencia');
+    Route::post('/salvarVarios', [DefuntoController::class, 'salvarSequencia'])->name('defunto.salvarSequencia');
 });
 
 Route::prefix('cemiterio')->group(function(){

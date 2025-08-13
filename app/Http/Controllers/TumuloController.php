@@ -46,8 +46,7 @@ class TumuloController extends Controller
         $tumuloCriado = Tumulo::create($tumulo);
         $this->gerarQrCode($tumuloCriado->id);
         $cemiterio = Cemiterio::find($dados['cemiterio']);
-        return redirect()->route('tumulo.cadastrarSequencia', $cemiterio->id)->with('success', 'Formulário enviado com sucesso!');
-        // return view(view: 'tumulo.cadastrarSequencia', compact('cemiterio'));
+        return redirect()->route('tumulo.cadastrarSequencia', $cemiterio->id)->with('success', 'Cadastrado com sucesso!');
     }
 
     public function visualizar($id){
