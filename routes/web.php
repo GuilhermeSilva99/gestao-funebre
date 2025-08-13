@@ -36,4 +36,6 @@ Route::prefix('tumulo')->group(function(){
     Route::get('/editar/{id}', [TumuloController::class, 'editar'])->name('tumulo.editar');
     Route::put('/atualizar/{id}', [TumuloController::class, 'atualizar'])->name('tumulo.atualizar');
     Route::get('/deletar/{id}', [TumuloController::class, 'deletar'])->name('tumulo.deletar');
+    Route::get('/qrcode/{id}',[TumuloController::class, 'qrcode'])->name('tumulo.qrcode');
+    Route::get('/visualizar/{id}', [TumuloController::class, 'visualizar'])->name('tumulo.visualizar');
 });

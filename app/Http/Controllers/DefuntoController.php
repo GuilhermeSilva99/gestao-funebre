@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cemiterio;
+use App\Models\Midia;
 use App\Models\Tumulo;
 use App\Models\Defunto;
 use Illuminate\Http\Request;
@@ -39,13 +40,18 @@ class DefuntoController extends Controller
                 'nome'=> $dados['nome'],
                 'cpf'=> $dados['cpf'],
                 'historia'=> $dados['historia'],
-                'foto'=> $path_foto,
-                'codigo_qr'=>"",
                 'tumulo_id'=> $dados['tumulo']
             );
+        
             
         $defuntoCriado = Defunto::create($defunto);
-        $this->gerarQrCode($defuntoCriado->id);
+
+        $midia = array(
+            'midia'=> $path_foto,
+            'defunto_id'=> $defuntoCriado->id
+        );
+
+        Midia::create($midia);
         return redirect(route('defunto.listar'));
     }
 
