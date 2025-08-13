@@ -31,6 +31,7 @@
                             <td class="border border-gray-300 px-4 py-2">{{ $cemiterio->endereco }}</td>
                             <td class="border border-gray-300 px-4 py-2">
                                 <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('cemiterio.editar', $cemiterio->id) }}>Editar</a>
+                                <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.cadastrarSequencia', $cemiterio->id) }}>Cadastrar tumulos</a>
                                 <!-- <a class="bg-red-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('cemiterio.deletar', $cemiterio->id) }}>Deletar</a> -->
                             </td>
                         </tr>

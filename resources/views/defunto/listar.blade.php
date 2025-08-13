@@ -32,7 +32,7 @@
                             <td class="border border-gray-300 px-4 py-2">
                                 <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('defunto.editar', $defunto->id) }}>Editar</a>
                                 <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('defunto.visualizar', $defunto->id) }}>Visualizar</a>
-                                <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('defunto.qrcode', $defunto->id) }}>QR Code</a>
+                                <!-- <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('defunto.qrcode', $defunto->id) }}>QR Code</a> -->
                                 <!-- <a class="bg-red-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('defunto.deletar', $defunto->id) }}>Deletar</a> -->
                             </td>
                         </tr>

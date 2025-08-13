@@ -17,6 +17,11 @@ class TumuloController extends Controller
         return view('tumulo.cadastrar', compact('cemiterios'));
     }
 
+    public function cadastrarSequencia($id){
+        $cemiterio = Cemiterio::find($id);
+        return view('tumulo.cadastrarSequencia', compact('cemiterio'));
+    }
+
     public function salvar(Request $request) {
         $dados = $request->all();
         $tumulo = array(
@@ -28,6 +33,21 @@ class TumuloController extends Controller
         $tumuloCriado = Tumulo::create($tumulo);
         $this->gerarQrCode($tumuloCriado->id);
         return redirect(route('tumulo.listar'));
+    }
+
+    public function salvarSequencia(Request $request){
+        $dados = $request->all();
+        $tumulo = array(
+            'nome'=> $dados['nome'],
+            'numero'=> $dados['numero'],
+            'codigo_qr'=>"",
+            'cemiterio_id'=> $dados['cemiterio'],
+        );
+        $tumuloCriado = Tumulo::create($tumulo);
+        $this->gerarQrCode($tumuloCriado->id);
+        $cemiterio = Cemiterio::find($dados['cemiterio']);
+        return redirect()->route('tumulo.cadastrarSequencia', $cemiterio->id)->with('success', 'Formulário enviado com sucesso!');
+        // return view(view: 'tumulo.cadastrarSequencia', compact('cemiterio'));
     }
 
     public function visualizar($id){
