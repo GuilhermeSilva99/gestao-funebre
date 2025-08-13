@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string( 'numero');
+            $table->string('codigo_qr')->nullable();
             $table->foreignId('cemiterio_id');
             $table->timestamps();
         });

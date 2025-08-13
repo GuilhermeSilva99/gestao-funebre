@@ -9,6 +9,7 @@ class Tumulo extends Model
     protected $fillable = [
         'nome',
         'numero',
+        'codigo_qr',
         'cemiterio_id'
     ];
 }

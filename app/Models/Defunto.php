@@ -10,8 +10,6 @@ class Defunto extends Model
         'nome',
         'cpf',
         'historia',
-        'codigo_qr',
-        'foto',
         'tumulo_id',
     ];
 }
