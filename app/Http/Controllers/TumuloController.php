@@ -32,7 +32,7 @@ class TumuloController extends Controller
             'cemiterio_id'=> $dados['cemiterio'],
         );
         $tumuloCriado = Tumulo::create($tumulo);
-        $this->gerarQrCode($tumuloCriado->id);
+        $this->gerarQrCodeComTitulo($tumuloCriado->id);
         return redirect(route('tumulo.listar'));
     }
 
@@ -45,7 +45,7 @@ class TumuloController extends Controller
             'cemiterio_id'=> $dados['cemiterio'],
         );
         $tumuloCriado = Tumulo::create($tumulo);
-        $this->gerarQrCode($tumuloCriado->id);
+        $this->gerarQrCodeComTitulo($tumuloCriado->id);
         $cemiterio = Cemiterio::find($dados['cemiterio']);
         return redirect()->route('tumulo.cadastrarSequencia', $cemiterio->id)->with('success', 'Cadastrado com sucesso!');
     }
@@ -97,6 +97,54 @@ class TumuloController extends Controller
         $nome_codigo_qr = 'storage/qrcodes/'.$nome_qr;
         Tumulo::find($id)->update(['codigo_qr'=>$nome_codigo_qr]);
         
+    }
+
+    public function gerarQrCodeComTitulo($id)
+    {
+        $tumulo = Tumulo::find($id);
+        $nome_qr = $tumulo->nome.'_'.$tumulo->numero.'_qrcode.png';
+        // 1. Gera o QR Code em PNG
+        $qrPath = public_path('storage/qrcodes/' . $nome_qr);
+        QrCode::format('png')
+            ->size(300)
+            ->generate(route('tumulo.visualizar', $id), $qrPath);
+
+        // 2. Abre a imagem do QR Code
+        $qrImage = imagecreatefrompng($qrPath);
+        $qrWidth = imagesx($qrImage);
+        $qrHeight = imagesy($qrImage);
+
+        // 3. Configuração da área extra para o título
+        $titleHeight = 40; // Altura da faixa
+        $newHeight = $qrHeight + $titleHeight;
+
+        // 4. Criar nova imagem com fundo branco
+        $newImage = imagecreatetruecolor($qrWidth, $newHeight);
+        $white = imagecolorallocate($newImage, 255, 255, 255);
+        imagefill($newImage, 0, 0, $white);
+
+        // 5. Colar o QR Code na nova imagem (começando de y=0)
+        imagecopy($newImage, $qrImage, 0, 0, 0, 0, $qrWidth, $qrHeight);
+
+        // 6. Escrever o título no espaço extra
+        $black = imagecolorallocate($newImage, 0, 0, 0);
+        $text = $tumulo->nome;
+        $fontSize = 5; // Fonte interna do GD
+        $textWidth = imagefontwidth($fontSize) * strlen($text);
+        $x = ($qrWidth - $textWidth) / 2;
+        $y = $qrHeight + ($titleHeight - imagefontheight($fontSize)) / 2;
+        imagestring($newImage, $fontSize, $x, $y, $text, $black);
+
+        $qrTituloPath = 'storage/qrcodes/'.$tumulo->nome.'_'.$tumulo->numero.'_titulo_qrcode.png';
+        // 7. Salvar a nova imagem
+        imagepng($newImage, $qrTituloPath);
+
+        // Liberar memória
+        imagedestroy($qrImage);
+        imagedestroy($newImage);
+
+        Tumulo::find($id)->update(['codigo_qr'=>$qrTituloPath]);
+        // return response()->download(public_path('qrcode_titulo.png'));
     }
 
     public function qrcode($id) {
