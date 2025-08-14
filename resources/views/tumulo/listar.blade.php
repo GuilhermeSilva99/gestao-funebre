@@ -46,6 +46,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $tumulos->links() }}
         </div>
     </div>
 @endsection

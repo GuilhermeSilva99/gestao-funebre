@@ -61,9 +61,12 @@ class TumuloController extends Controller
     }
 
     public function listar() {
-        $tumulos = Tumulo::all();
+        // $tumulos = Tumulo::all();
         $cemiterios= Cemiterio::all();
-        return view('tumulo.listar', compact('tumulos','cemiterios'));
+        // return view('tumulo.listar', compact('tumulos','cemiterios'));
+
+        $tumulos = Tumulo::orderBy('id', 'desc')->paginate(10);
+        return view('tumulo.listar', compact('tumulos', 'cemiterios'));
     }
 
     public function editar($id) {
@@ -153,7 +156,10 @@ class TumuloController extends Controller
     }
     
     public function listarQrCodes() {
-        $tumulos = Tumulo::all();
+        // $tumulos = Tumulo::all();
+        // return view('tumulo.listarQrCodes', compact('tumulos'));
+
+        $tumulos = Tumulo::orderBy('id', 'desc')->paginate(10);
         return view('tumulo.listarQrCodes', compact('tumulos'));
     }
 

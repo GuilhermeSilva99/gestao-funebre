@@ -39,6 +39,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $defuntos->links() }}
         </div>
     </div>
 @endsection

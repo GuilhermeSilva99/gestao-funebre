@@ -103,8 +103,9 @@ class DefuntoController extends Controller
     {
         $cemiterios = Cemiterio::all();
         $tumulos = Tumulo::all();
-        $defuntos = Defunto::all();
+        $defuntos = Defunto::orderBy('id', 'desc')->paginate(10);
 
+        // $tumulos = Tumulo::orderBy('id', 'desc')->paginate(10);
         return view('defunto.listar', compact('cemiterios', 'tumulos', 'defuntos'));
     }
 
