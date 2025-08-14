@@ -20,8 +20,8 @@
                     <tr>
                         <th class="border border-gray-300 px-4 py-2 text-left">Nome</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Número</th>
-                        <th class="border border-gray-300 px-4 py-2 text-left">Qr Code</th>
-                        <th><a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.baixartodosqrcode') }}>Baixar todos</a></th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Qr Code <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.baixartodosqrcode') }}>Baixar todos</a></th>
+                        <th></th>
                     </tr>
 
                 </thead>
@@ -30,7 +30,7 @@
                         <tr>
                             <td class="border border-gray-300 px-4 py-2">{{ $tumulo->nome }}</td>
                             <td class="border border-gray-300 px-4 py-2">{{ $tumulo->numero }}</td>
-                            <td class="border border-gray-300 px-4 py-2">{{ $tumulo->codigo_qr }}</td>
+                            <!-- <td class="border border-gray-300 px-4 py-2">{{ $tumulo->codigo_qr }}</td> -->
                             <td class="border border-gray-300 px-4 py-2">
                                 <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.baixarqrcode', $tumulo->id) }}>Baixar</a>
                                 <!-- <a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" href={{ route('tumulo.visualizar', $tumulo->id) }}>Visualizar</a> -->
