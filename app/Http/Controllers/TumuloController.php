@@ -8,7 +8,8 @@ use App\Models\Midia;
 use App\Models\Tumulo;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
+use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class TumuloController extends Controller
 {
@@ -101,5 +102,43 @@ class TumuloController extends Controller
     public function qrcode($id) {
         $tumulo = Tumulo::find($id);
         return view('tumulo.qrcode', compact('tumulo'));
+    }
+    
+    public function listarQrCodes() {
+        $tumulos = Tumulo::all();
+        return view('tumulo.listarQrCodes', compact('tumulos'));
+    }
+
+    public function baixarQrCode($id){
+        $tumulo = Tumulo::find($id);
+        return response()->download(public_path($tumulo->codigo_qr), $tumulo->nome.'.jpg');
+    }
+
+    public function baixarTodosQrCode(){
+        // Lista de imagens
+        $imagens = [];
+
+        $tumulos = Tumulo::all();
+        foreach ($tumulos as $tumulo) {
+            $imagens[] = $tumulo->codigo_qr;
+        }
+
+        // Nome do arquivo zip temporário
+        $zipFileName = 'QrCodes.zip';
+        $zipPath = storage_path('app/public/' . $zipFileName);
+
+        // Cria o arquivo zip
+        $zip = new ZipArchive;
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($imagens as $imagem) {
+                if (file_exists($imagem)) {
+                    $zip->addFile($imagem, basename($imagem));
+                }
+            }
+            $zip->close();
+        }
+
+        // Retorna o zip para download e deleta depois
+        return response()->download($zipPath)->deleteFileAfterSend(true);
     }
 }

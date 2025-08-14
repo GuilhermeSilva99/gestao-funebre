@@ -42,4 +42,7 @@ Route::prefix('tumulo')->group(function(){
     Route::get('/visualizar/{id}', [TumuloController::class, 'visualizar'])->name('tumulo.visualizar');
     Route::get('/cadastrarVarios/{id}', [TumuloController::class, 'cadastrarSequencia'])->name('tumulo.cadastrarSequencia');
     Route::post('/salvarVarios', [TumuloController::class, 'salvarSequencia'])->name('tumulo.salvarSequencia');
+    Route::get('/listarqrcodes', [TumuloController::class, 'listarqrcodes'])->name('tumulo.listarqrcodes');
+    Route::get('/baixarQrCode/{id}', [TumuloController::class, 'baixarQrCode'])->name('tumulo.baixarqrcode');
+    Route::get('/baixarTodosQrCode', [TumuloController::class, 'baixarTodosQrCode'])->name('tumulo.baixartodosqrcode');
 });

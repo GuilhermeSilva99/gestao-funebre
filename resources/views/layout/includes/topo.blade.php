@@ -65,6 +65,21 @@
                     <a href={{ route('defunto.listar') }} class="block px-4 py-2 text-sm hover:bg-gray-700 rounded">Listar</a>
                 </div>
             </div>
+            <div class="relative">
+                <button
+                    class="flex justify-between items-center w-full px-4 py-2 hover:bg-gray-700 rounded dropdown-toggle"
+                    data-target="dropdown3">
+                    Funcionalidades
+                    <svg class="w-4 h-4 ml-2 transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <div id="dropdown3" class="hidden mt-1 ml-4 space-y-1">
+                    <a href={{ route('tumulo.listarqrcodes') }} class="block px-4 py-2 text-sm hover:bg-gray-700 rounded">Listar Qr Codes</a>
+                </div>
+            </div>
 
             <!-- <div class="relative">
                 <button
