@@ -5,7 +5,10 @@
         </label>
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-            id="grid-nome" type="text" name="nome" value="{{isset($defunto->nome) ? $defunto->nome : ''}}" required>
+            id="grid-nome" type="text" name="nome" value="{{isset($defunto->nome) ? $defunto->nome : old('nome')}}" required>
+        @error('nome')
+            <div style="color: red;">{{ $message }}</div>
+        @enderror
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-6">
@@ -15,7 +18,10 @@
         </label>
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-cpf" type="text" name="cpf" value="{{isset($defunto->cpf) ? $defunto->cpf : ''}}" required>
+            id="grid-cpf" type="text" name="cpf" value="{{isset($defunto->cpf) ? $defunto->cpf : old('cpf')}}" required>
+        @error('cpf')
+            <div style="color: red">{{ $message }}</div>
+        @enderror
     </div>
 </div>
 
@@ -35,7 +41,7 @@
                     @endif
                 @endforeach
             @else
-                <option  selected="">Selecione um</option>
+                <option  selected="" value="">Selecione um</option>
                 @foreach ($tumulos as $tumulo)
                     <option value={{ $tumulo->id }}>{{$tumulo->nome}}</option>
                 @endforeach
@@ -56,7 +62,10 @@
         </label>
         <textarea
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-historia" type="text" name="historia" required> {{isset($defunto->historia) ? $defunto->historia : ''}} </textarea>
+            id="grid-historia" type="text" name="historia" required> {{isset($defunto->historia) ? $defunto->historia : old('historia')}} </textarea>
+        @error('historia')
+            <div style="color: red">{{ $message }}</div>
+        @enderror
     </div>
 </div>
 

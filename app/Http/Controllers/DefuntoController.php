@@ -39,6 +39,22 @@ class DefuntoController extends Controller
 
     public function salvar(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
+            'cpf' => 'required|digits:11',
+            'tumulo' => 'required',
+            'historia' => 'required|min:10',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'nome.regex' => 'O campo nome deve conter apenas letras.',
+            'cpf.required' => 'O campo e-mail é obrigatório.',
+            'cpf.digits' => 'O CPF deve ter exatamente 11 números.',
+            'tumulo.required' => 'Selecione uma opção.',
+            'historia.required' => 'O campo historia é obrigatório.',
+            'historia.min' => 'O campo história deve ter no mínimo :min caracteres.',
+        ]);
+
         $dados = $request->all();
 
         if (isset($request->file)) {
@@ -70,6 +86,21 @@ class DefuntoController extends Controller
 
     public function salvarSequencia(Request $request)
     {
+        $validatedData = $request->validate([
+            'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
+            'cpf' => 'required|digits:11',
+            'tumulo' => 'required',
+            'historia' => 'required|min:10',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'nome.regex' => 'O campo nome deve conter apenas letras.',
+            'cpf.required' => 'O campo e-mail é obrigatório.',
+            'cpf.digits' => 'O CPF deve ter exatamente 11 números.',
+            'tumulo.required' => 'Selecione uma opção.',
+            'historia.required' => 'O campo historia é obrigatório.',
+            'historia.min' => 'O campo história deve ter no mínimo :min caracteres.',
+        ]);
+
         $dados = $request->all();
 
         if (isset($request->file)) {

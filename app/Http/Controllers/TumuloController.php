@@ -24,6 +24,17 @@ class TumuloController extends Controller
     }
 
     public function salvar(Request $request) {
+
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'numero' => 'required|string',
+            'cemiterio' => 'required',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'numero.required' => 'O campo e-mail é obrigatório.',
+            'cemiterio.required' => 'Selecione uma opção.',
+        ]);
+
         $dados = $request->all();
         $tumulo = array(
             'nome'=> $dados['nome'],
@@ -37,6 +48,17 @@ class TumuloController extends Controller
     }
 
     public function salvarSequencia(Request $request){
+
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'numero' => 'required|string',
+            'cemiterio' => 'required',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'numero.required' => 'O campo e-mail é obrigatório.',
+            'cemiterio.required' => 'Selecione uma opção.',
+        ]);
+
         $dados = $request->all();
         $tumulo = array(
             'nome'=> $dados['nome'],

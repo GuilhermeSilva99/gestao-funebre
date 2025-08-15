@@ -12,6 +12,16 @@ class CemiterioController extends Controller
     }
 
     public function salvar(Request $request) {
+
+        $validatedData = $request->validate([
+            'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
+            'endereco' => 'required',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'nome.regex' => 'O campo nome deve conter apenas letras.',
+            'endereco.required' => 'O campo endereço é obrigatório.',
+        ]);
+
         $dados = $request->all();
         $cemiterio=array(
             'nome'=>$dados['nome'],
