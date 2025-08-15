@@ -5,7 +5,7 @@
         </label>
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-            id="grid-nome" type="text" name="nome" value="{{isset($defunto->nome) ? $defunto->nome : ''}}">
+            id="grid-nome" type="text" name="nome" value="{{isset($defunto->nome) ? $defunto->nome : ''}}" required>
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-6">
@@ -15,7 +15,7 @@
         </label>
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-cpf" type="text" name="cpf" value="{{isset($defunto->cpf) ? $defunto->cpf : ''}}">
+            id="grid-cpf" type="text" name="cpf" value="{{isset($defunto->cpf) ? $defunto->cpf : ''}}" required>
     </div>
 </div>
 
@@ -24,7 +24,7 @@
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-tumulo">
             Túmulo
         </label>
-        <select name="tumulo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <select name="tumulo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" required>
             
             @if(isset($defunto->tumulo_id))
                 @foreach ($tumulos as $tumulo)
@@ -56,7 +56,7 @@
         </label>
         <textarea
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-historia" type="text" name="historia" > {{isset($defunto->historia) ? $defunto->historia : ''}} </textarea>
+            id="grid-historia" type="text" name="historia" required> {{isset($defunto->historia) ? $defunto->historia : ''}} </textarea>
     </div>
 </div>
 

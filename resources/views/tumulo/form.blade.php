@@ -5,7 +5,7 @@
         </label>
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-nome" type="text" name="nome" value="{{isset($tumulo->nome) ? $tumulo->nome : ''}}">
+            id="grid-nome" type="text" name="nome" value="{{isset($tumulo->nome) ? $tumulo->nome : ''}}" required>
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-6">
@@ -15,7 +15,7 @@
         </label>
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-numero" type="text" name="numero" value="{{isset($tumulo->numero) ? $tumulo->numero : ''}}">
+            id="grid-numero" type="text" name="numero" value="{{isset($tumulo->numero) ? $tumulo->numero : ''}}" required>
     </div>
 </div>
 <div class="flex flex-wrap -mx-3 mb-6">
@@ -23,7 +23,7 @@
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-cemiterio">
             Cemitério
         </label>
-        <select name="cemiterio" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <select name="cemiterio" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" required>
             
             @if(isset($tumulo->cemiterio_id))
                 @foreach ($cemiterios as $cemiterio)
