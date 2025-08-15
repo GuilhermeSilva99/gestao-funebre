@@ -42,7 +42,7 @@ class DefuntoController extends Controller
 
         $validatedData = $request->validate([
             'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
-            'cpf' => 'required|digits:11',
+            'cpf' => 'required|digits:11|unique:defuntos,cpf',
             'tumulo' => 'required',
             'historia' => 'required|min:10',
         ], [
@@ -50,6 +50,7 @@ class DefuntoController extends Controller
             'nome.regex' => 'O campo nome deve conter apenas letras.',
             'cpf.required' => 'O campo e-mail é obrigatório.',
             'cpf.digits' => 'O CPF deve ter exatamente 11 números.',
+            'cpf.unique' => 'Este CPF já foi cadastrado.',
             'tumulo.required' => 'Selecione uma opção.',
             'historia.required' => 'O campo historia é obrigatório.',
             'historia.min' => 'O campo história deve ter no mínimo :min caracteres.',
@@ -88,7 +89,7 @@ class DefuntoController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
-            'cpf' => 'required|digits:11',
+            'cpf' => 'required|digits:11|unique:defuntos,cpf',
             'tumulo' => 'required',
             'historia' => 'required|min:10',
         ], [
@@ -96,6 +97,7 @@ class DefuntoController extends Controller
             'nome.regex' => 'O campo nome deve conter apenas letras.',
             'cpf.required' => 'O campo e-mail é obrigatório.',
             'cpf.digits' => 'O CPF deve ter exatamente 11 números.',
+            'cpf.unique' => 'Este CPF já foi cadastrado.',
             'tumulo.required' => 'Selecione uma opção.',
             'historia.required' => 'O campo historia é obrigatório.',
             'historia.min' => 'O campo história deve ter no mínimo :min caracteres.',
