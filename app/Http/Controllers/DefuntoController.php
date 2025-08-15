@@ -6,6 +6,7 @@ use App\Models\Cemiterio;
 use App\Models\Midia;
 use App\Models\Tumulo;
 use App\Models\Defunto;
+use App\Rules\CpfValido;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -42,7 +43,7 @@ class DefuntoController extends Controller
 
         $validatedData = $request->validate([
             'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
-            'cpf' => 'required|digits:11|unique:defuntos,cpf',
+            'cpf' => ['required','digits:11','unique:defuntos,cpf', new CpfValido],
             'tumulo' => 'required',
             'historia' => 'required|min:10',
         ], [
@@ -89,7 +90,7 @@ class DefuntoController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
-            'cpf' => 'required|digits:11|unique:defuntos,cpf',
+            'cpf' => ['required','digits:11','unique:defuntos,cpf', new CpfValido],
             'tumulo' => 'required',
             'historia' => 'required|min:10',
         ], [
