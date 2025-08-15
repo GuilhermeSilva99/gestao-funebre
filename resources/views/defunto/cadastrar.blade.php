@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('titulo','Cadastrar Defunto')
+@section('titulo', 'Cadastrar Defunto')
 
 @section('conteudo')
     <div class="div_conteudo">
@@ -14,4 +14,19 @@
         </div>
 
     </div>
+    <script>
+        const cpfInput = document.getElementById('grid-cpf');
+
+        cpfInput.addEventListener('input', function () {
+            let value = this.value.replace(/\D/g, ''); // remove tudo que não é número
+            if (value.length > 11) value = value.slice(0, 11); // limita a 11 dígitos
+
+            // Aplica a máscara corretamente
+            value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+            value = value.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d{1,2})$/, '$1.$2.$3-$4');
+
+            this.value = value;
+        });
+    </script>
 @endsection

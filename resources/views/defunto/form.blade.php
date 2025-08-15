@@ -18,7 +18,7 @@
         </label>
         <input
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="grid-cpf" type="text" name="cpf" value="{{isset($defunto->cpf) ? $defunto->cpf : old('cpf')}}" required>
+            id="grid-cpf" type="text" name="cpf" placeholder="000.000.000-00" value="{{isset($defunto->cpf) ? $defunto->cpf : old('cpf')}}" required>
         @error('cpf')
             <div style="color: red">{{ $message }}</div>
         @enderror

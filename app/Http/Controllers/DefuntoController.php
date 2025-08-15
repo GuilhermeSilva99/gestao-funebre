@@ -43,7 +43,7 @@ class DefuntoController extends Controller
 
         $validatedData = $request->validate([
             'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
-            'cpf' => ['required','digits:11','unique:defuntos,cpf', new CpfValido],
+            'cpf' => ['required','unique:defuntos,cpf', new CpfValido],
             'tumulo' => 'required',
             'historia' => 'required|min:10',
         ], [
@@ -58,6 +58,7 @@ class DefuntoController extends Controller
         ]);
 
         $dados = $request->all();
+        $dados['cpf'] = preg_replace('/[^0-9]/', '', $dados['cpf']);
 
         if (isset($request->file)) {
             $extension = $request->file('foto')->extension();
@@ -90,7 +91,7 @@ class DefuntoController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|string|regex:/^[\pL\s]+$/u|max:255',
-            'cpf' => ['required','digits:11','unique:defuntos,cpf', new CpfValido],
+            'cpf' => ['required','unique:defuntos,cpf', new CpfValido],
             'tumulo' => 'required',
             'historia' => 'required|min:10',
         ], [
@@ -105,6 +106,7 @@ class DefuntoController extends Controller
         ]);
 
         $dados = $request->all();
+        $dados['cpf'] = preg_replace('/[^0-9]/', '', $dados['cpf']);
 
         if (isset($request->file)) {
             $extension = $request->file('foto')->extension();
